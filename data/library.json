@@ -1,0 +1,72 @@
+{
+    "AC-phrase": {
+        "format": [
+            "abstruct", "concrete"
+        ],
+        "name": "抽象+具象 名词组合",
+        "id": "AC-phrase"
+    },
+    "CC-phrase": {
+        "format": [
+            "concrete", "concrete"
+        ],
+        "name": "双具象名词组合",
+        "id": "CC-phrase"
+    },
+    "AA-phrase": {
+        "format": [
+            "abstruct","abstruct"
+        ],
+        "name": "双抽象名词组合",
+        "id": "AA-phrase"
+    },
+    "Adj-C-phrase": {
+        "format": [
+            "adjective","concrete"
+        ],
+        "name": "形容词-具象 词组",
+        "id": "Adj-C-phrase"
+    },
+    "Adj-A-phrase": {
+        "format": [
+            "adjective","abstruct"
+        ],
+        "name": "形容词-抽象 词组",
+        "id": "Adj-A-phrase"
+    },
+    "AVC-motion": {
+        "format": [
+            "abstruct","verb-t","concrete"
+        ],
+        "name": "抽象-动作-具象 短语",
+        "id": "AVC-motion"
+    },
+    "CVA-motion": {
+        "format": [
+            "concrete","verb-t","abstruct"
+        ],
+        "name": "具象-动作-抽象 短语",
+        "id": "CVA-motion"
+    },
+    "CV-motion": {
+        "format": [
+            "concrete","verb-i"
+        ],
+        "name": "具象-动作 短语",
+        "id": "CV-motion"
+    },
+    "AV-motion": {
+        "format": [
+            "abstruct","verb-i"
+        ],
+        "name": "抽象-动作 短语",
+        "id": "AV-motion"
+    },
+    "CPV-motion": {
+        "format": [
+            "concrete","place","verb-i"
+        ],
+        "name": "具象-地点-动作 短语",
+        "id": "CPV-motion"
+    }
+}

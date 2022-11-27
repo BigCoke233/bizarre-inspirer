@@ -1,0 +1,27 @@
+{
+    "name": "怪奇灵感生成器",
+    "short_name": "bizzare_inspirer",
+    "icons": [
+      {
+        "src": "/dizzy.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/dizzy.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      },
+      {
+        "src": "/dizzy.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#666",
+    "background_color": "#666",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait"
+  }
