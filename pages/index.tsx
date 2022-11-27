@@ -142,7 +142,7 @@ export default function Home(data: any) {
       md:justify-center z-10">
         <h1 className="font-semibold text-gray-600 text-lg my-4">怪奇灵感生成器</h1>
         <div className="font-bold text-gray-800 tracking-wider px-4">
-          <p className="select-none text-3xl md:text-6xl">我想到了</p>
+          <p className="select-none text-3xl md:text-6xl my-2">我想到了</p>
           <p className="text-gray-600 text-5xl font-normal md:text-6xl" id="inspiration">什么呢？</p>
         </div>
         <div className="my-4 md:my-8 flex gap-2" id="action">
