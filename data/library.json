@@ -48,6 +48,13 @@
         "name": "具象-动作-抽象 短语",
         "id": "CVA-motion"
     },
+    "CVC-motion": {
+        "format": [
+            "concrete","verb-t","concrete"
+        ],
+        "name": "具象-动作-具象 短语",
+        "id": "CVC-motion"
+    },
     "CV-motion": {
         "format": [
             "concrete","verb-i"
@@ -68,5 +75,19 @@
         ],
         "name": "具象-地点-动作 短语",
         "id": "CPV-motion"
+    },
+    "CPVC-motion": {
+        "format": [
+            "concrete","place","verb-t","concrete"
+        ],
+        "name": "具象-地点-动作-具象 短语",
+        "id": "CPVC-motion"
+    },
+    "Adj-CPVC-motion": {
+        "format": [
+            "adjective","concrete","place","verb-t","concrete"
+        ],
+        "name": "形容词-具象-地点-动作-具象 短语",
+        "id": "Adj-CPVC-motion"
     }
 }
