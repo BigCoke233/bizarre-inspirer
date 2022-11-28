@@ -10,7 +10,7 @@ import Select from 'react-select'
 import { AiFillSetting, AiFillCloseCircle } from 'react-icons/ai'
 import { ImShuffle } from 'react-icons/im'
 
-const VERSION = '0.0.6'
+const VERSION = '0.0.7'
 
 export default function Home(data) {
 
@@ -270,7 +270,7 @@ export default function Home(data) {
       </aside>
 
       <footer className="absolute inset-x-0 bottom-0 w-full text-gray-400 text-sm p-4 z-0
-      flex flex-row justify-between hidden md:flex">
+      flex flex-row justify-between">
         <p>版本: v{VERSION}</p>
         <p>作者 <a href="https://guhub.cn" rel="noreferrer" target="_blank"
         className="underline underline-offset-4">Eltrac</a></p>
