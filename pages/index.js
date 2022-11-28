@@ -68,7 +68,8 @@ export default function Home(data) {
       return libs[num];
     }
 
-    //开始生成词组
+    try {
+      //开始生成词组
     var output='';
     //获取词组模型
     var model;
@@ -99,6 +100,9 @@ export default function Home(data) {
       }
       i++
     });
+    } catch(e) {
+      console.log(e)
+    }
 
     text.innerHTML = output;
 
