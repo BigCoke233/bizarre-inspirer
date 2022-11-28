@@ -42,6 +42,7 @@ export default function Home(data) {
   /**
    * 核心代码
    */
+  var inspireTimes=0;
   var inspire = () => {
     const text = document.getElementById('inspiration');
 
@@ -100,11 +101,23 @@ export default function Home(data) {
     });
 
     text.innerHTML = output;
+
+    const keyTip = document.getElementById('key-tip')
+    if(inspireTimes>10){
+      const keyTip = document.getElementById('key-tip')
+      keyTip.classList.remove('opacity-0')
+    }else{
+      keyTip.classList.add('opacity-0')
+      inspireTimes++;
+    }
   }
 
   var shuffle = () => {
     const text = document.getElementById('inspiration');
     text.classList.toggle('flex-row-reverse')
+
+    const shuffleBtn = document.getElementById('shuffle-btn');
+    shuffleBtn.childNodes[0].classList.toggle("rotate-180")
   }
 
   /**
@@ -153,6 +166,15 @@ export default function Home(data) {
     tippy('[data-tippy-content', {
       placement: "bottom"
     })
+
+    /**
+     * 快捷键
+     */
+    document.onkeydown = () => {
+      if ( event.keyCode=='32' ) inspire()
+      if ( event.keyCode=='17' ) shuffle()
+      inspireTimes=0;
+    }
   }, [])
   
   return (
@@ -168,7 +190,9 @@ export default function Home(data) {
         <div className="my-4 md:my-8 flex gap-2 flex-row-reverse md:flex-row z-10" id="action">
           <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
           shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none z-10" 
-          id="shuffle-btn" data-tippy-content="倒转语序"><ImShuffle /></button>
+          id="shuffle-btn" data-tippy-content="倒转语序">
+            <span className="transition duration-300 block"><ImShuffle /></span>
+          </button>
 
           <button className="rounded-full py-2 px-6 bg-gray-700 text-white z-10
           shadow hover:shadow-lg hover:bg-gray-900 transition duration-300 select-none" 
@@ -179,6 +203,8 @@ export default function Home(data) {
           fixed top-2 left-2 md:static" 
           id="setting-btn" data-tippy-content="设置项"><AiFillSetting /></button>
         </div>
+        <p id="key-tip" className="text-gray-400 opacity-0 transition duration-300
+        hidden md:block">使用 [空格] 来快速生成词组，使用 [ctrl] 来快速翻转词组</p>
       </main>
 
       <aside>
