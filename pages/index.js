@@ -10,6 +10,8 @@ import Select from 'react-select'
 import { AiFillSetting, AiFillCloseCircle } from 'react-icons/ai'
 import { ImShuffle } from 'react-icons/im'
 
+const VERSION = '0.0.5'
+
 export default function Home(data) {
 
   /**
@@ -186,7 +188,12 @@ export default function Home(data) {
 
       <main className="flex flex-col justify-between items-center w-full min-h-screen text-center
       md:justify-center z-10">
-        <h1 className="font-semibold text-gray-600 text-lg my-4">怪奇灵感生成器</h1>
+        <header className="my-3 md:my-4">
+          <h1 className="font-semibold text-gray-600 text-lg">怪奇灵感生成器</h1>
+          <p className="text-sm text-gray-500 md:hidden">
+            <span className="bg-gray-200 px-1 rounded-sm">v{VERSION}</span>
+          </p>
+        </header>
         <div className="font-bold text-gray-800 tracking-wider px-4">
           <p className="select-none text-3xl md:text-6xl my-2">我想到了</p>
           <p className="text-gray-600 text-5xl font-normal md:text-6xl flex-wrap flex justify-center" id="inspiration">什么呢？</p>
@@ -204,7 +211,7 @@ export default function Home(data) {
 
           <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
           shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none
-          fixed top-2 left-2 md:static" 
+          fixed top-4 left-4 md:static" 
           id="setting-btn" data-tippy-content="设置项"><AiFillSetting /></button>
         </div>
         <p id="key-tip" className="text-gray-400 opacity-0 transition duration-300
@@ -259,6 +266,13 @@ export default function Home(data) {
         }
         `}</style>
       </aside>
+
+      <footer className="absolute inset-x-0 bottom-0 w-full text-gray-400 text-sm p-4 z-0
+      flex flex-row justify-between hidden md:flex">
+        <p>版本: v{VERSION}</p>
+        <p>作者 <a href="https://guhub.cn" rel="noreferrer" target="_blank"
+        className="underline underline-offset-4">Eltrac</a></p>
+      </footer>
 
     </div>
   )
