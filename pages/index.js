@@ -1,12 +1,16 @@
 import * as React from 'react'
 
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css'; // optional for styling
+
 import { readFileSync } from 'fs'
 import path from "path"
 import Select from 'react-select'
 
 import { AiFillSetting, AiFillCloseCircle } from 'react-icons/ai'
+import { ImShuffle } from 'react-icons/im'
 
-export default function Home(data: any) {
+export default function Home(data) {
 
   /**
    * 设置项
@@ -15,12 +19,7 @@ export default function Home(data: any) {
   var settings = {
     "model": "AC-phrase",
     "custom_model": []
-  }
-  //尝试读取 localStorage
-  React.useEffect(()=>{
-    var local= JSON.parse(localStorage.getItem("settings"))
-    if(local!=undefined) settings = local;
-  }, [])
+  };
   //词组模型设置
   var modelList = Object.keys(data.data.libs);
   const modelOptions = []
@@ -46,7 +45,7 @@ export default function Home(data: any) {
   var inspire = () => {
     const text = document.getElementById('inspiration');
 
-    function getRandomWord(lib: string){
+    function getRandomWord(lib){
       //获取词库
       var words = data.data.words[lib];
       //获取随机数
@@ -75,7 +74,7 @@ export default function Home(data: any) {
         if(i!=0 && word_list[i-1]==word){
           repeat=true;
         }else{
-          output += word;
+          output += '<span>'+word+'</span>';
           word_list.push(word);
           repeat=false;
         }
@@ -86,13 +85,9 @@ export default function Home(data: any) {
     text.innerHTML = output;
   }
 
-  /**
-   * 使用 localStorage 保存设置
-   */
-  function saveSettings() {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("settings", JSON.stringify(settings))
-    }
+  var shuffle = () => {
+    const text = document.getElementById('inspiration');
+    text.classList.toggle('flex-row-reverse')
   }
 
   /**
@@ -104,8 +99,12 @@ export default function Home(data: any) {
      * 绑定核心代码
      */
     inspire();
+
     const btn = document.getElementById('inspire');
     btn?.addEventListener("click", inspire);
+
+    const shuffleBtn = document.getElementById('shuffle-btn');
+    shuffleBtn?.addEventListener("click", shuffle);
 
     /**
      * 窗口开关
@@ -131,8 +130,12 @@ export default function Home(data: any) {
     
     //保存设置
     const saveBtn = document.getElementById('save-setting');
-    saveBtn?.addEventListener("click", saveSettings);
     saveBtn?.addEventListener("click", closeSetting);
+
+    //使用 tippy
+    tippy('[data-tippy-content', {
+      placement: "bottom"
+    })
   }, [])
   
   return (
@@ -143,14 +146,21 @@ export default function Home(data: any) {
         <h1 className="font-semibold text-gray-600 text-lg my-4">怪奇灵感生成器</h1>
         <div className="font-bold text-gray-800 tracking-wider px-4">
           <p className="select-none text-3xl md:text-6xl my-2">我想到了</p>
-          <p className="text-gray-600 text-5xl font-normal md:text-6xl" id="inspiration">什么呢？</p>
+          <p className="text-gray-600 text-5xl font-normal md:text-6xl flex" id="inspiration">什么呢？</p>
         </div>
-        <div className="my-4 md:my-8 flex gap-2" id="action">
+        <div className="my-4 md:my-8 flex gap-2 flex-row-reverse md:flex-row z-10" id="action">
+          <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
+          shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none z-10" 
+          id="shuffle-btn" data-tippy-content="倒转语序"><ImShuffle /></button>
+
           <button className="rounded-full py-2 px-6 bg-gray-700 text-white z-10
-          shadow hover:shadow-lg hover:bg-gray-900 transition duration-300 select-none" id="inspire">想一想</button>
+          shadow hover:shadow-lg hover:bg-gray-900 transition duration-300 select-none" 
+          id="inspire">想一想</button>
+
           <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
           shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none
-          fixed top-2 left-2 md:static" id="setting-btn"><AiFillSetting /></button>
+          fixed top-2 left-2 md:static" 
+          id="setting-btn" data-tippy-content="设置项"><AiFillSetting /></button>
         </div>
       </main>
 
@@ -164,7 +174,7 @@ export default function Home(data: any) {
           <div id="setting-content" className="p-5 py-2 overflow-y-auto" style={{minHeight: 'calc(80vh - 3rem)'}}>
 
             <label className="text-lg my-2 block">词组模型</label>
-            <Select id="model-option" options={modelOptions} defaultValue={{"value":settings.model, "label": data.data.libs[settings.model].name}} 
+            <Select id="model-option" options={modelOptions}  
             onChange={(choice)=>{settings.model=choice.value}} placeholder="选择一个词组模型..." />
             <p className="text-gray-600 my-2 text-sm">决定生成什么样的词组或句子。若自定义模型设置项不为空，则此项不生效。</p>
 
@@ -179,7 +189,7 @@ export default function Home(data: any) {
             <p className="text-gray-600 my-2 text-sm">adjective 为“形容词”，verb-i 为不及物动词，verb-t 为及物动词，abstruct 为抽象名词，concrete 为具象名词，place 为地点副词。</p>
 
             <button id="save-setting" className="block p-3 py-2 rounded bg-gray-700 text-white w-full mt-3
-            transition duration-300 hover:bg-gray-900">保存并应用</button>
+            transition duration-300 hover:bg-gray-900">应用</button>
           </div>
         </div>
         <style jsx>{`
