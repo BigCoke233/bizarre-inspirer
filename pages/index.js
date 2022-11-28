@@ -10,7 +10,7 @@ import Select from 'react-select'
 import { AiFillSetting, AiFillCloseCircle } from 'react-icons/ai'
 import { ImShuffle } from 'react-icons/im'
 
-const VERSION = '0.0.5'
+const VERSION = '0.0.6'
 
 export default function Home(data) {
 
@@ -138,6 +138,8 @@ export default function Home(data) {
 
     const btn = document.getElementById('inspire');
     btn?.addEventListener("click", inspire);
+    const text = document.getElementById('inspiration');
+    text?.addEventListener("click", inspire);
 
     const shuffleBtn = document.getElementById('shuffle-btn');
     shuffleBtn?.addEventListener("click", shuffle);
