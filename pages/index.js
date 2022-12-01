@@ -10,7 +10,7 @@ import Select from 'react-select'
 import { AiFillSetting, AiFillCloseCircle } from 'react-icons/ai'
 import { ImShuffle } from 'react-icons/im'
 
-const VERSION = '0.0.7'
+const VERSION = '1.0.0'
 
 export default function Home(data) {
 
