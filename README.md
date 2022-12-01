@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 怪奇灵感生成器
 
-## Getting Started
+让我列几个词组，看看他们能让你联想到什么：
 
-First, run the development server:
+- 水晶寄生酒店
+- 霓虹捍卫者
+- 灵体发生器
+- 概念粉饰洗刷器
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+听起来像是一些小说或者游戏里会出现的名词，对吧？这些词都是由怪奇灵感生成器随机生成的。你在编写故事、创造世界观、设计游戏的时候可能就会需要这样的灵感，而灵感不是时时刻刻都有的，让这个生成器帮你「想一想」，或许能得到一些不错的点子。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 使用
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+你可以直接访问 [bi.guhub.cn](https://bi.guhub.cn)，或者将怪奇灵感生成器作为 PWA（渐进式应用）安装在你的电脑或者手机等设备上，这样你就可以不打开浏览器随时使用应用，但前提是你的浏览器支持 PWA。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 原理
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+怪奇灵感生成器的工作原理十分简单。首先，我们把所有会用到的字词都储存在一个 JSON 文件里，名为 `words.json`，同时，我们将这些词分为了以下几类：
 
-## Learn More
+- 形容词（Adjective）
+- 及物动词（Verb-t）
+- 不及物动词（Verb-i）
+- 抽象名词（Abstruct）
+- 具象名词（Concrete）
+- 地点状语（Place）
 
-To learn more about Next.js, take a look at the following resources:
+目前只有这些词类，以后可能会有更多。怪奇灵感生成器在产生新词组的时候会按照一定的方式对这几类词中的几类进行排列组合，这种排列组合的方式就叫做「词组模型」。应用内置了许多常见的模型，例如「抽象-具象 词组」和「具象-动作-抽象 词组」等等，默认情况下应用会随机选择一个模型生成词组，当然你也可以在设置中指定一个模型，甚至是自定义词组的排列方式。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 贡献词库
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+如果你觉得这个项目有用，可以考虑提交 Pull Request 丰富现有的词库，修改 `/data/words.json` 文件即可。
 
-## Deploy on Vercel
+但在你这么做之前，请记住不是任何符合词类的字词都适合放进词库里，例如「台灯」这样过于具体的名词就不适合，因为他不能让人产生更多的联想；而对于「鸟」这个词，在它之前加上各种修饰词，譬如「相思鸟」「天启鸟」「灾厄鸟」，就能够产生新的灵感。在你决定要不要将一个词加入词库时，不妨试试看他能不能与词库中的其他词碰撞产生新的可能。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+------
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Copyright &copy; 2022 Eltrac, under MIT License.
