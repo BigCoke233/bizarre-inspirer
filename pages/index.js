@@ -208,13 +208,13 @@ export default function Home(data) {
         </div>
         <div className="my-4 md:my-8 flex gap-2 flex-row-reverse md:flex-row z-10" id="action">
           <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
-          shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none z-10 mb-14 md:mb-0 focus:outline:none" 
+          shadow hover:shadow-md hover:bg-gray-200 transition duration-300 select-none z-10 mb-14 md:mb-0 focus:outline-0" 
           id="shuffle-btn" data-tippy-content="倒转语序">
             <span className="transition duration-300 block"><ImShuffle /></span>
           </button>
 
           <button className="rounded-full py-2 px-6 bg-gray-700 text-white z-10 mb-14 md:mb-0
-          shadow hover:shadow-lg hover:bg-gray-900 transition duration-300 select-none focus:outline:none" 
+          shadow hover:shadow-lg hover:bg-gray-900 transition duration-300 select-none focus:outline-0" 
           id="inspire">想一想</button>
 
           <button className="rounded-full py-2 px-3 bg-gray-100 text-gray-700 text-xl border
