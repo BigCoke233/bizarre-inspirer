@@ -178,9 +178,15 @@ export default function Home(data) {
     /**
      * 快捷键
      */
-    document.onkeydown = () => {
-      if ( event.keyCode=='32' ) inspire()
-      if ( event.keyCode=='17' ) shuffle()
+    document.onkeydown = (event) => {
+      if ( event.keyCode=='32' ){
+        event.preventDefault();
+        inspire();
+      }
+      if ( event.keyCode=='17' ){
+        event.preventDefault();
+        shuffle();
+      }      
       inspireTimes=0;
     }
   }, [])
